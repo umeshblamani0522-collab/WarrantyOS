@@ -5,7 +5,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
-@SpringBootApplication(scanBasePackages = "com.wp", exclude = org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration.class)
+@SpringBootApplication(
+    scanBasePackages = "com.wp",
+    exclude = {
+        org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration.class,
+        org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration.class
+    }
+)
 @EntityScan(basePackages = "com.wp")
 @EnableScheduling
 public class App {
